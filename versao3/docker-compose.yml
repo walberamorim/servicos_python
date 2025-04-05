@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  jogatina:
+    build: .
+    image: noticias
+    container_name: jogatina
+    hostname: jogatina
+    restart: always
+    volumes:
+      - ./servicos/jogatina:/servico
+    command: python3 /servico/jogatina.py
+    ports:
+      - "5001:5000"
+
+  sistemas:
+    build: .
+    image: noticias
+    container_name: sistemas
+    hostname: sistemas
+    restart: always
+    volumes:
+      - ./servicos/sistemas:/servico
+    command: python3 /servico/sistemas.py
+    ports:
+      - "5002:5000"
