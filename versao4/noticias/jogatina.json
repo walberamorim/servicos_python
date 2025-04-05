@@ -1,15 +1,5 @@
-from flask import Flask, Response
-import json
-
-VERSAO = "3.0.0"
-
-INFO = {
-    "descricao": "Servicços que disponibiliza notícias sobre jogos eletrônicos",
-    "autor" : "Walber Amorim",
-    "versao": VERSAO
-}
-
-JOGATINA = [
+{
+    "noticias": [
         {
             "id": "1",
             "data": "15/10/2019",
@@ -29,26 +19,4 @@ JOGATINA = [
             "endereco": "https://sempreupdate.com.br/conheca-5-distribuicoes-gnu-linux-voltadas-para-jogos/"
         }
     ]
-
-ALIVE = "sim"
-
-servico = Flask("noticias")
-
-@servico.get("/")
-def get():
-    return Response(json.dumps(INFO), mimetype="application/json", status=200)
-
-@servico.get("/info")
-def get_info():
-    return Response(json.dumps(INFO), mimetype="application/json", status=200)
-
-@servico.get("/alive")
-def is_alive():
-    return Response(ALIVE, mimetype="text/plain", status=200)
-
-@servico.get("/jogatina")
-def get_jogatina():    
-    return Response(json.dumps(JOGATINA), mimetype="application/json", status=200)
-
-if __name__ == "__main__":
-    servico.run(host="0.0.0.0", port=5000, debug=True)
+}

@@ -26,7 +26,7 @@ def get_jogatina():
         noticias = json.loads(noticias)
     else:
         print(f"Ocorreu um erro ao obter as noticias")
-    return noticias
+    return sucesso, noticias
 
 def get_sistemas():
     sucesso, sistemas = acessar(URL_SISTEMAS)
@@ -34,7 +34,7 @@ def get_sistemas():
         sistemas = json.loads(sistemas)
     else:
         print(f"Ocorreu um erro ao obter as noticias")
-    return sistemas
+    return sucesso, sistemas
 
 def servico_jogatina_ativo():
     sucesso, ativo = acessar(URL_ALIVE_JOGATINA)
@@ -57,9 +57,21 @@ def imprimir_noticias(tipo_noticias, noticias):
 if __name__ == "__main__":
     while True:
         if servico_jogatina_ativo():
-            imprimir_noticias("Jogatina", get_jogatina())
+            sucesso, noticias = get_jogatina()
+            tipo = "jogatina"
+            if sucesso:
+                imprimir_noticias(tipo, noticias)
+            else:
+                print(f"Ocorreu um erro ao obter as noticias de {tipo}")
+        else:
+            print("Nenhum servico ativo")
         if servico_sistemas_ativo():
-            imprimir_noticias("Sistemas", get_sistemas())
-        if not servico_jogatina_ativo() and not servico_sistemas_ativo():
-            print("Servico inativo")
+            sucesso, noticias = get_sistemas()
+            tipo = "sistemas"
+            if sucesso:
+                imprimir_noticias(tipo, noticias)
+            else:
+                print(f"Ocorreu um erro ao obter as noticias de {tipo}")
+        else:
+            print("Nenhum servico ativo")
         sleep(5)

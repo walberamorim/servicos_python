@@ -24,3 +24,19 @@ services:
     command: python3 /servico/sistemas.py
     ports:
       - "5002:5000"
+
+  bd_jogatina:
+    image: memcached
+    container_name: bd_jogatina
+    hostname: bd_jogatina
+    restart: always
+    ports:
+      - "5003:11211"
+
+  bd_sistemas:
+    image: memcached
+    container_name: bd_sistemas
+    hostname: bd_sistemas
+    restart: always
+    ports:
+      - "5004:11211"
