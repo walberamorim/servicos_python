@@ -2,9 +2,8 @@ import requests
 import json
 from time import sleep
 
-NOTICIAS_JOGATINA = "C:\\Users\\WAA-HP\\Documents\\posweb\\servicos_python\\versao4\\noticias\\jogatina.json"
-NOTICIAS_SISTEMAS = "C:\\Users\\WAA-HP\\Documents\\posweb\\servicos_python\\versao4\\noticias\\sistemas.json"
-
+NOTICIAS_JOGATINA = "C:\\Users\\WAA\\Documents\\_PosWeb\\servicos_python\\versao4\\noticias\\jogatina.json"
+NOTICIAS_SISTEMAS = "C:\\Users\\WAA\\Documents\\_PosWeb\\servicos_python\\versao4\\noticias\\sistemas.json"
 URL_SERVICO_JOGATINA = "http://127.0.0.1:5001/gravar"
 URL_SERVICO_SISTEMAS = "http://127.0.0.1:5002/gravar"
 
